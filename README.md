@@ -1,4 +1,4 @@
-# tensorflow_app
+# satellitetimelapse
 
 **Satellite Timelapse GUI**
 
