@@ -5,6 +5,8 @@
 Uses the download and preprocessing tools from https://github.com/kvos/CoastSat to make a timelapse video
 of Sentinel 2 or LANDSAT 5,7, or 8 imagery.
 
+![GUI gif](https://github.com/mlundine/SatelliteTimelapse/blob/main/gui.png)
+
 **By: Mark Lundine**
 
 **1: Setting Up with Anaconda**
