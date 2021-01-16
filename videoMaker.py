@@ -17,10 +17,10 @@ from coastsat import SDS_download, SDS_preprocess
 import cv2
 from os.path import isfile, join
 
-def makeVideo(frameFolder, vidPath):
+def makeVideo(frameFolder, vidPath, rate):
     pathIn= frameFolder
     pathOut = vidPath
-    fps = 2
+    fps = rate
     frame_array = []
     files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]
     files = sorted(files)
@@ -43,7 +43,7 @@ def makeVideo(frameFolder, vidPath):
         out.write(frame_array[i])
     out.release()
     
-def main(polygon, dates, sat_list, sitename, vidType):
+def main(polygon, dates, sat_list, sitename, vidType, rate):
     # filepath where data will be stored
     filepath_data = os.path.join(os.getcwd(), 'data')
 
@@ -88,7 +88,7 @@ def main(polygon, dates, sat_list, sitename, vidType):
     SDS_preprocess.save_jpg(metadata, settings, vidType)
     videoName = os.path.join(filepath_data, sitename, sitename + '.avi')
     imageFolder = os.path.join(filepath_data, sitename, 'jpg_files', 'preprocessed')
-    makeVideo(imageFolder, videoName)
+    makeVideo(imageFolder, videoName, rate)
     
 
 
