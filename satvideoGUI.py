@@ -34,7 +34,7 @@ class Window(QMainWindow):
 
 
 
-    def makeVideoButton(self, sitename, dates, polygonStuff, satChecks, vidType):
+    def makeVideoButton(self, sitename, dates, polygonStuff, satChecks, vidType, rate):
         polygon = []
         for point in polygonStuff:
             print(point)
@@ -51,7 +51,7 @@ class Window(QMainWindow):
         if satChecks[3].isChecked() == True:
             satList.append('L8')
             
-        videoMaker.main(polygon, dates, satList, sitename, vidType)
+        videoMaker.main(polygon, dates, satList, sitename, vidType, rate)
         
     def home(self):
 
@@ -137,6 +137,14 @@ class Window(QMainWindow):
         self.vbox.addWidget(L8checkLabel, 9,4)
         self.vbox.addWidget(L8check,10,4)
 
+        frameRateLabel = QLabel('Frames per second')
+        frameRate = QSpinBox()
+        frameRate.setMinimum(2)
+        frameRate.setMaximum(10)
+        frameRate.setValue(4)
+        self.vbox.addWidget(frameRateLabel,11,1)
+        self.vbox.addWidget(frameRate,12,1)
+
 
         self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -163,7 +171,8 @@ class Window(QMainWindow):
                                                                [botRightLong.text(), botRightLat.text()],
                                                                [botLeftLong.text(), botLeftLat.text()],
                                                                [topRightLong.text(),topRightLat.text()]
-                                                               ], checkboxes, str(vidType.currentText())))
+                                                               ], checkboxes, str(vidType.currentText()),
+                                                               frameRate.value()))
         
 
                 
