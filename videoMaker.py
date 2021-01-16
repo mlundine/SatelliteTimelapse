@@ -23,6 +23,7 @@ def makeVideo(frameFolder, vidPath):
     fps = 2
     frame_array = []
     files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]
+    files = sorted(files)
     for i in range(len(files)):
         filename=os.path.join(pathIn,files[i])
 ##        sat = os.path.splitext(filename)[0][-2:]
